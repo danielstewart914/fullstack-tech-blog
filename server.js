@@ -6,6 +6,7 @@ const routes = require( './controllers' );
 
 const sequelize = require( './config/connection' );
 const { urlencoded } = require('express');
+const exp = require('constants');
 
 const SequelizeStore = require( 'connect-session-sequelize' )( session.Store );
 
@@ -32,6 +33,9 @@ app.set( 'view engine', 'handlebars' );
 app.use( express.json() );
 app.use( urlencoded( { extended: true } ) );
 app.use( express.static( path.join( __dirname, 'public' ) ) );
+
+// add bootstrap css
+app.use( '/css', express.static( path.join( __dirname, '/node_modules/bootstrap/dist/css' ) ) );
 
 app.use( routes );
 

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>The Fullstack Tech Blog</title>
+</head>
+<body>
+    <header class="bg-navy text-white p-3">
+        <h1 class="text-center">The Fullstack Tech Blog</h1>
+        <nav>
+            <a class="btn btn-secondary bg-dark-grey fw-bold mx-2" href="/">Home</a>
+            <a class="btn btn-secondary bg-dark-grey fw-bold mx-2" href="/dashboard">Dashboard</a>
+            {{#if loggedIn}}
+            <button id="logout" class="btn btn-secondary bg-dark-grey fw-bold mx-2">Logout</button>
+            {{else}}
+            <a class="btn btn-secondary bg-dark-grey fw-bold mx-2" href="/login">Login</a>
+            {{/if}}
+        </nav>
+    </header>
+    <div class="d-flex flex-column p-3 align-items-center">
+            {{{body}}}
+    </div>
+    {{#if loggedIn}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
+</body>
+</html>
