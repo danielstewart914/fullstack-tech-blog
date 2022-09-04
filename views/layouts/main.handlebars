@@ -11,13 +11,14 @@
 <body>
     <header class="bg-navy text-white p-3">
         <h1 class="text-center">The Fullstack Tech Blog</h1>
-        <nav>
+        <nav class="d-flex align-items-center">
             <a class="btn btn-secondary bg-dark-grey fw-bold mx-2" href="/">Home</a>
-            <a class="btn btn-secondary bg-dark-grey fw-bold mx-2" href="/dashboard">Dashboard</a>
+            <a class="btn btn-secondary bg-dark-grey fw-bold mx-2" href="/dashboard">My Dashboard</a>
             {{#if loggedIn}}
+            <span class="ms-auto p-1">Logged In as:<br>{{userName}}</span>
             <button id="logout" class="btn btn-secondary bg-dark-grey fw-bold mx-2">Logout</button>
             {{else}}
-            <a class="btn btn-secondary bg-dark-grey fw-bold mx-2" href="/login">Login</a>
+            <a class="btn btn-secondary bg-dark-grey fw-bold mx-2 ms-auto" href="/login">Login</a>
             {{/if}}
         </nav>
     </header>

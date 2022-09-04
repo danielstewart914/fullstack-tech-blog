@@ -36,6 +36,8 @@ app.use( express.static( path.join( __dirname, 'public' ) ) );
 
 // add bootstrap css
 app.use( '/css', express.static( path.join( __dirname, '/node_modules/bootstrap/dist/css' ) ) );
+// add bootstrap js
+app.use( '/js', express.static( path.join( __dirname, '/node_modules/bootstrap/dist/js' ) ) );
 
 app.use( routes );
 

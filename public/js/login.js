@@ -1,4 +1,5 @@
 const login = async ( event ) => {
+    event.preventDefault();
 
     const email = document.querySelector( '#loginEmail' ).value.trim();
     const password = document.querySelector( '#loginPassword' ).value.trim();
