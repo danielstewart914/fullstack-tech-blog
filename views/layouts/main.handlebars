@@ -4,29 +4,57 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/logo.css">
     <title>The Fullstack Tech Blog</title>
 </head>
 <body>
     <header class="bg-navy text-white p-3">
         <h1 class="text-center">The Fullstack Tech Blog</h1>
-        <nav class="d-flex align-items-center">
-            <a class="btn btn-secondary bg-dark-grey fw-bold mx-2" href="/">Home</a>
-            <a class="btn btn-secondary bg-dark-grey fw-bold mx-2" href="/dashboard">My Dashboard</a>
-            {{#if loggedIn}}
-            <span class="ms-auto p-1">Logged In as:<br>{{userName}}</span>
-            <button id="logout" class="btn btn-secondary bg-dark-grey fw-bold mx-2">Logout</button>
-            {{else}}
-            <a class="btn btn-secondary bg-dark-grey fw-bold mx-2 ms-auto" href="/login">Login</a>
-            {{/if}}
-        </nav>
+            <nav class="navbar navbar-dark navbar-expand-sm">
+                <div class="container-fluid p-0 m-0">
+                    <a class="navbar-brand" href="/"> 
+                        <!-- logo -->
+                        <div class="logo">
+                            <div class="logo-element logo-D">&nbsp;</div>
+                            <div class="logo-S">
+                                <div class="logo-element">&nbsp;</div>
+                                <div class="logo-element">&nbsp;</div>
+                            </div>
+                        </div>
+                    </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mb-2 mb-lg-0 w-100">
+                        <li class="nav-item">
+                            <a class="nav-link active fs-4" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active fs-4" href="/dashboard">Dashboard</a>
+                        </li>
+                        {{#if loggedIn}}
+                        <li class="nav-item ms-auto">
+                            <a id="logout" class="nav-link active fs-4" href="#">Logout</a>
+                        </li>
+                        {{else}}
+                        <li class="nav-item ms-auto">
+                            <a class="nav-link active fs-4" href="/login">Login</a>
+                        </li>
+                        {{/if}}
+                    </ul>
+                </div>
+                </div>
+            </nav>
     </header>
     <div class="d-flex flex-column p-3 align-items-center">
             {{{body}}}
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     {{#if loggedIn}}
-  <script src="/js/logout.js"></script>
-  {{/if}}
+    <script src="/js/logout.js"></script>
+    {{/if}}
 </body>
 </html>

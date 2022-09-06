@@ -6,7 +6,8 @@ userRouter.post( '/', async ( req, res ) => {
     try {
         const newUserData = await User.create( req.body );
 
-        req.session.userId = newUserData.id,
+        req.session.userId = newUserData.id;
+        req.session.userName = newUserData.name;
         req.session.loggedIn = true;
         req.session.save( () => res.status(200).json( newUserData ) );
     } catch ( err ) {
@@ -17,23 +18,22 @@ userRouter.post( '/', async ( req, res ) => {
 // User login route
 userRouter.post( '/login', async ( req, res ) => {
     try {
-        console.log( req.body )
-
         const userData = await User.findOne( { where: { email: req.body.email } } );
 
         if( !userData ) {
-            console.log( 'email failed' )
             res.status(400).json( { message: 'Incorrect email or password, please try again' } );
+            return;
         };
 
         const validPass = await userData.checkPassword( req.body.password );
 
         if( !validPass ) {
-            console.log( 'password failed' )
             res.status(400).json( { message: 'Incorrect email or password, please try again' } );
+            return;
         }
 
         req.session.userId = userData.id;
+        req.session.userName = userData.name;
         req.session.loggedIn = true;
 
         req.session.save( () => {

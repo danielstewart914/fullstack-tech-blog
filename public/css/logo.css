@@ -1,0 +1,63 @@
+:root {
+    --primary: #0b3142ff;
+    --middle-grey: #515867ff;
+    --dark-grey: #2a303cff;
+    --light: #eef9fbff;
+    --black: #000;
+
+
+    /* total logo size */
+    --logo-size: 50px;
+}
+
+/* DS logo */
+.logo {
+    position: relative;
+    background: var(--light);
+    min-width: var(--logo-size);
+    min-height: var(--logo-size);
+
+    outline: 2px solid var(--black);
+}
+
+.logo-element {
+    border: 1px solid var(--black);
+}
+
+.logo-D {
+    position: absolute;
+    background: var(--primary);
+    width: calc(var(--logo-size) * 0.35);
+    height: calc(var(--logo-size) * 0.7);
+    border-radius: 0 calc(var(--logo-size) * 0.4) calc(var(--logo-size) * 0.4) 0;
+    box-shadow: 1px 1px 4px var(--dark-grey);
+    top: calc(var(--logo-size) * 0.15);
+    left: calc(var(--logo-size) * 0.075);
+}
+
+.logo-S {
+    position: absolute;
+    width: calc(var(--icon-size) / 2);
+    right: calc(var(--logo-size) * 0.12);
+}
+
+.logo-S .logo-element {
+    position: relative;
+    background: var(--middle-grey);
+    width: calc(var(--logo-size) * 0.25);
+    height: calc(var(--logo-size) * 0.50);
+    border-radius: 0 calc(var(--logo-size) * 0.3) calc(var(--logo-size) * 0.3) 0;
+}
+
+.logo-S .logo-element:nth-child(1) {
+    transform: rotate(-135deg);
+    top: calc(var(--logo-size) * 0.07);
+    right: calc(var(--logo-size) * 0.1);
+    box-shadow: -1px 0px 4px var(--dark-grey);
+}
+
+.logo-S .logo-element:nth-child(2) {
+    transform: rotate(45deg);
+    bottom: calc(var(--logo-size) * 0.07);
+    box-shadow: 0px -1px 4px var(--dark-grey);
+}

@@ -1,28 +1,31 @@
 const homeRouter = require( 'express' ).Router();
-const { User } = require('../models');
+const { User, Post, Comment } = require('../models');
 const authorized = require( '../utils/auth' );
 
 
 homeRouter.get( '/', async ( req, res ) => {
     try {
 
-        if ( req.session.loggedIn ) {
-            const name = ( await User.findOne( { 
-                attributes: { 
-                include: [ 'name' ] },
-                where: { 
-                    id: req.session.userId 
-                } 
-                } ) )
-            .toJSON()
-            .name;
+        const postData = await Post.findAll( {
+            include: [ 
+                { 
+                    model:User,
+                    attributes: [
+                        'username'
+                    ]
+                },
+                'postComments'
+             ],
+            order: [ [ 'createdAt', 'ASC' ] ]
+        } );
 
-            res.render( 'homepage', {
-                loggedIn: req.session.loggedIn,
-                userName: name
-            } );
-
-        } else res.render( 'homepage', { loggedIn: req.session.loggedIn } );
+        const posts = postData.map( post => post.toJSON() );
+        
+        res.render( 'homepage', {
+            loggedIn: req.session.loggedIn,
+            userName: req.session.userName,
+            posts: posts
+        } );
 
     } catch ( err ) {
         res.status(400).json( err );
@@ -32,22 +35,36 @@ homeRouter.get( '/', async ( req, res ) => {
 
 homeRouter.get( '/login', ( req, res ) => {
 
-    if (req.session.loggedIn) {
-      res.redirect('/');
+    if ( req.session.loggedIn ) {
+      res.redirect( '/' );
       return;
     }
   
-    res.render('login');
-  });
+    res.render( 'login' );
+} );
 
 homeRouter.get( '/signup', ( req, res ) => {
 
-  if (req.session.loggedIn) {
-    res.redirect('/');
+  if ( req.session.loggedIn ) {
+    res.redirect( '/' );
     return;
   }
 
-  res.render('signup');
-});
+  res.render( 'signup' );
+} );
+
+homeRouter.get( '/dashboard', authorized, async ( req, res ) => {
+    try {
+
+        res.render( 'dashboard', {
+            loggedIn: req.session.loggedIn,
+            userName: req.session.userName
+        } );
+
+    } catch ( err ) {
+        res.status(400).json( err );
+    }
+
+} );
 
 module.exports = homeRouter;
