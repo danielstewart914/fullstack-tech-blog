@@ -1,5 +1,5 @@
 const homeRouter = require( 'express' ).Router();
-const { User, Post, Comment } = require('../models');
+const { User, Post } = require('../models');
 const authorized = require( '../utils/auth' );
 
 
@@ -16,7 +16,7 @@ homeRouter.get( '/', async ( req, res ) => {
                 },
                 'postComments'
              ],
-            order: [ [ 'createdAt', 'ASC' ] ]
+            order: [ [ 'createdAt', 'DESC' ] ]
         } );
 
         const posts = postData.map( post => post.toJSON() );

@@ -1,11 +1,11 @@
-<h2 class="mb-3">Posts</h2>
+<h2 class="mb-3">Recent Posts</h2>
 <div class="container">
     <div class="list-group list-group-numbered border border-dark">
         {{#each posts}}
         <a class="list-group-item d-flex flex-column flex-sm-row justify-content-between align-items-start" href="/post/{{id}}">
             <div class="ms-sm-2 me-sm-auto">
                 <div class="fw-bold">{{title}}</div>
-                <span>Written By: {{user.username}}</span>
+                <small class="text-muted">Posted By: {{user.username}}</small>
             </div>
             <div class="d-flex flex-column align-items-start align-items-sm-end">
                 <div>
@@ -14,7 +14,7 @@
                     <span class="badge bg-secondary rounded-pill">{{postComments.length}}</span>
                 </div>
                 <div>
-                    {{format_date createdAt}} - {{format_time createdAt}}
+                    <small class="text-muted">{{format_date createdAt}}</small>
                 </div>
             </div>
         </a>
