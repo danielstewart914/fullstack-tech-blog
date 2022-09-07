@@ -1,1 +1,21 @@
-<h2>Dashboard</h2>
+<h2 class="mb-3">Dashboard</h2>
+<div class="container d-flex flex-column">
+    <button class="btn btn-dark bg-navy align-self-end px-4">+ New Post</button>
+    <h3>Your Posts</h3>
+    <div class="list-group list-group-numbered border border-dark">
+        {{#each posts}}
+        <a class="list-group-item d-flex flex-column flex-sm-row justify-content-between align-items-start" href="/post/{{id}}">
+            <div class="ms-sm-2 me-sm-auto">
+                <div class="fw-bold">{{title}}</div>
+                <small class="text-muted">Posted At: {{format_time createdAt}} on {{format_date createdAt}}</small>
+            </div>
+            <div class="d-flex flex-column align-items-start align-items-sm-end">
+                <div>
+                    <span class="fw-bold">Comments</span>
+                    <span class="badge text-white bg-green rounded-pill">{{postComments.length}}</span>
+                </div>
+            </div>
+        </a>
+        {{/each}}
+    </div>
+</div>

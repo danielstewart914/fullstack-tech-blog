@@ -1,5 +1,5 @@
 const homeRouter = require( 'express' ).Router();
-const { User, Post } = require('../models');
+const { User, Post, Comment } = require('../models');
 const authorized = require( '../utils/auth' );
 
 
@@ -56,15 +56,65 @@ homeRouter.get( '/signup', ( req, res ) => {
 homeRouter.get( '/dashboard', authorized, async ( req, res ) => {
     try {
 
+        const postData = await Post.findAll( {
+            where: {
+                user_id: req.session.userId
+            },
+            include: [ 'postComments' ],
+            order: [ [ 'createdAt', 'DESC' ] ]
+        } );
+
+        const posts = postData.map( post => post.toJSON() );
+
         res.render( 'dashboard', {
             loggedIn: req.session.loggedIn,
-            userName: req.session.userName
+            userName: req.session.userName,
+            posts
         } );
 
     } catch ( err ) {
         res.status(400).json( err );
     }
 
+} );
+
+homeRouter.get( '/post/:id', async ( req, res ) => {
+    try {
+
+        const post = ( await Post.findByPk( req.params.id, {
+            include: [ { 
+                model: User,
+                attributes: { 
+                    exclude: [ 'password' ]
+                    }
+            } ] 
+        } ) )
+        .toJSON();
+
+        const commentData = ( await Comment.findAll( { 
+            where: {
+                post_id: req.params.id
+            },
+            include: [ { 
+                model: User,
+                attributes: { 
+                    exclude: [ 'password' ]
+                    }
+            } ]
+        } ) );
+
+        const comments = commentData.map( comment => comment.toJSON() );
+
+        res.render( 'post', {
+            loggedIn: req.session.loggedIn,
+            userName: req.session.userName,
+            post,
+            comments,
+            usersPost: post.user_id === req.session.userId
+        } );
+    } catch ( err ) {
+        res.status(400).json( err );
+    }
 } );
 
 module.exports = homeRouter;

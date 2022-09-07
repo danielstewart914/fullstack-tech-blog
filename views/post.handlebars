@@ -1,0 +1,73 @@
+<div id="post" data-id="{{post.id}}" class="w-100">
+    {{#if usersPost}}
+    <div class="d-flex justify-content-end">
+        <button id="edit-post" class="btn btn-dark bg-navy text-light px-4 m-2">Edit Post</button>
+        <button id="save-edit" class="btn btn-dark bg-navy text-light px-4 m-2 d-none">Save Changes</button>
+        <button type="button" class="btn btn-danger text-light px-4 m-2" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete Post</button>
+    </div>
+    {{/if}}
+    <div class="container d-flex justify-content-center">
+        <h2 id="title" class="mb-3">{{post.title}}</h2>
+        <input id="edit-title" type="text" name="Edit Title" class="form-control mb-3 w-50 d-none" value="{{post.title}}">
+    </div>
+</div>
+<div class="container d-flex flex-column align-items-center">
+    <div class="card m-1">
+        <div class="card-body">
+            <textarea class="col-12 form-control d-none" name="Edit Content" id="edit-content" cols="200" rows="15">{{post.content}}</textarea>
+            <p id="content">{{post.content}}</p>
+        </div>
+        <footer class="card-footer d-flex justify-content-between">
+            <small class="text-muted">{{post.user.username}}</small>
+            <small class="text-muted">{{format_date post.createdAt}}</small>
+        </footer>
+    </div>
+    <div class="col-10">
+        {{#if loggedIn}}
+        <form class="row mb-3">
+            <div class="col-10 form-floating">
+                <input type="text" name="New Comment" id="new-comment" class="form-control" placeholder="Add New Comment.....">
+                <label class="form-label ms-3" for="new-comment">Add New Comment.....</label>
+            </div>
+            <div class="col-2">
+                <input id="post-comment" type="submit" class="btn btn-dark bg-navy m-2" value="Submit">
+            </div>
+        </form>
+        {{/if}}
+        {{#if comments}}
+        <h4>Comments:</h4>
+        {{/if}}
+        {{#each comments}}
+        <div class="card m-2">
+            <p class="p-2 m-0">{{comment}}</p>
+            <footer class="card-footer d-flex justify-content-between">
+                <small class="text-muted">{{user.username}}</small>
+                <small class="text-muted">{{format_date createdAt}}</small>
+            </footer>
+        </div>
+        {{/each}}
+    </div>
+</div>
+{{#if loggedIn}}
+    <script src="/js/comment.js"></script>
+{{/if}}
+{{#if usersPost}}
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content border border-danger text-danger">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Are You Sure?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        This action cannot be reversed.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark bg-navy" data-bs-dismiss="modal">Never Mind</button>
+        <button id="delete-post" type="button" class="btn btn-danger">Delete Post!</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/js/post.js"></script>
+{{/if}}
