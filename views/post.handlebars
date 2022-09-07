@@ -18,7 +18,7 @@
             <p id="content">{{post.content}}</p>
         </div>
         <footer class="card-footer d-flex justify-content-between">
-            <small class="text-muted">{{post.user.username}}</small>
+            <small class="text-muted">Posted By: {{post.user.username}}</small>
             <small class="text-muted">{{format_date post.createdAt}}</small>
         </footer>
     </div>
@@ -30,7 +30,7 @@
                 <label class="form-label ms-3" for="new-comment">Add New Comment.....</label>
             </div>
             <div class="col-2">
-                <input id="post-comment" type="submit" class="btn btn-dark bg-navy m-2" value="Submit">
+                <button id="post-comment" class="btn btn-dark bg-navy m-2 px-4">Submit</button>
             </div>
         </form>
         {{/if}}
@@ -41,7 +41,7 @@
         <div class="card m-2">
             <p class="p-2 m-0">{{comment}}</p>
             <footer class="card-footer d-flex justify-content-between">
-                <small class="text-muted">{{user.username}}</small>
+                <small class="text-muted">Posted By: {{user.username}}</small>
                 <small class="text-muted">{{format_date createdAt}}</small>
             </footer>
         </div>

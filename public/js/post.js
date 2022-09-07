@@ -5,7 +5,6 @@ const editTitleEl = document.querySelector( '#edit-title' );
 const editContentEl = document.querySelector( '#edit-content' );
 const titleEl = document.querySelector( '#title' );
 const contentEl = document.querySelector( '#content' );
-const postEl = document.querySelector( '#post' );
 
 const editPost = ( event ) => {
     console.log( 'hello' )

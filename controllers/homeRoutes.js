@@ -100,7 +100,10 @@ homeRouter.get( '/post/:id', async ( req, res ) => {
                 attributes: { 
                     exclude: [ 'password' ]
                     }
-            } ]
+            } ],
+            order: [ 
+                [ 'createdAt', 'DESC' ]
+             ]
         } ) );
 
         const comments = commentData.map( comment => comment.toJSON() );

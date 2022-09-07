@@ -4,7 +4,7 @@ const { Post } = require( '../../models' );
 postRouter.post( '/', async ( req, res ) => {
     try {
 
-        if ( !req.body.title || !req.body.content || !req.session.user_id ) {
+        if ( !req.body.title || !req.body.content || !req.session.userId ) {
             res.status(400).json( { message: 'Missing Data' } );
             return;
         }
@@ -12,7 +12,7 @@ postRouter.post( '/', async ( req, res ) => {
         const newPost = await Post.create( { 
             title: req.body.title,
             content: req.body.content,
-            user_id: req.session.user_id
+            user_id: req.session.userId
          } );
         res.status(200).json( newPost );
         
