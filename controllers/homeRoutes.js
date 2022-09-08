@@ -78,6 +78,13 @@ homeRouter.get( '/dashboard', authorized, async ( req, res ) => {
 
 } );
 
+homeRouter.get( '/dashboard/new', authorized, ( req, res ) => {
+    res.render( 'newPost', {
+        loggedIn: req.session.loggedIn,
+        userName: req.session.userName
+    } );
+} );
+
 homeRouter.get( '/post/:id', async ( req, res ) => {
     try {
 
