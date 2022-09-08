@@ -22,6 +22,11 @@
             <small class="text-muted">{{format_date post.createdAt}}</small>
         </footer>
     </div>
+    {{#unless loggedIn}}
+    <div class="align-self-start mx-3 my-1">
+        <a href="/login">Login</a> to leave a comment
+    </div>
+    {{/unless}}
     <div class="col-10">
         {{#if loggedIn}}
         <form class="row mb-3 flex-column flex-sm-row">

@@ -7,9 +7,6 @@ const titleEl = document.querySelector( '#title' );
 const contentEl = document.querySelector( '#content' );
 
 const editPost = ( event ) => {
-    console.log( 'hello' )
-    event.preventDefault();
-
     titleEl.classList.add( 'd-none' );
     editTitleEl.classList.remove( 'd-none' );
 
