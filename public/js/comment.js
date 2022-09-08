@@ -13,7 +13,7 @@ const postComment = async () => {
         headers: { 'Content-Type': 'application/json' }
     } );
 
-    if ( response.ok ) document.location.reload();
+    if ( response.ok ) window.location.reload();
     else alert( 'Cannot Post Comment!' );
 }
 

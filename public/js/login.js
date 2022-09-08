@@ -11,7 +11,7 @@ const login = async ( event ) => {
             headers: { 'Content-Type': 'application/json' }
         } );
 
-        if ( response.ok ) document.location.replace( '/' );
+        if ( response.ok ) window.location.replace( '/' );
         else alert( 'Login failed!' );
     }
 }

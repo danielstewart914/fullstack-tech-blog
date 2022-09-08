@@ -30,7 +30,7 @@ const saveChanges = async ( event ) => {
         headers: { 'Content-Type': 'application/json' }
      } );
 
-     if ( response.ok ) document.location.reload();
+     if ( response.ok ) window.location.reload();
      else alert( 'Cannot Update Post!' );
 }
 
@@ -38,7 +38,7 @@ const deletePost = async ( event ) => {
     const response = await fetch( `/api/posts/${ postEl.dataset.id }`, {
         method: 'DELETE'
     } );
-    if ( response.ok ) document.location.replace( '/dashboard' );
+    if ( response.ok ) window.location.replace( '/dashboard' );
     else alert( 'Cannot Delete Post!' );
 }
 

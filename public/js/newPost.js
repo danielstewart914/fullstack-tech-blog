@@ -13,7 +13,7 @@ const createPost = async ( event ) => {
         headers: { 'Content-Type': 'application/json' }
      } );
 
-     if ( response.ok ) document.location.replace( '/dashboard' );
+     if ( response.ok ) window.location.replace( '/dashboard' );
      else alert( 'Cannot Create Post!' );
 }
 
