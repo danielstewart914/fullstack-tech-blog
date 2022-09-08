@@ -1,0 +1,27 @@
+[
+    {
+        "comment": "Cool Post!",
+        "post_id": 4,
+        "user_id": 2
+    },
+    {
+        "comment": "Quite Informative",
+        "post_id": 4,
+        "user_id": 3
+    },
+    {
+        "comment": "Fascinating theory",
+        "post_id": 3,
+        "user_id": 3
+    },
+    {
+        "comment": "Spot!!",
+        "post_id": 5,
+        "user_id": 7
+    },
+    {
+        "comment": "A good read",
+        "post_id": 6,
+        "user_id": 3
+    }
+]
