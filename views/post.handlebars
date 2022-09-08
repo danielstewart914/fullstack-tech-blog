@@ -35,7 +35,7 @@
     {{/unless}}
     <div class="col-10">
         {{#if loggedIn}}
-        <form class="row mb-3 flex-column flex-sm-row">
+        <div class="row mb-3 flex-column flex-sm-row">
             <div class="col-10 form-floating">
                 <input type="text" name="New Comment" id="new-comment" class="form-control" placeholder="Add New Comment.....">
                 <label class="form-label ms-3" for="new-comment">Add New Comment.....</label>
@@ -43,7 +43,7 @@
             <div class="col-2">
                 <button id="post-comment" class="btn btn-dark bg-navy m-2 px-4">Submit</button>
             </div>
-        </form>
+        </div>
         {{/if}}
         {{#if comments}}
         <h4>Comments:</h4>
