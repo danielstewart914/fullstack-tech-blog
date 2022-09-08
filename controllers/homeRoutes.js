@@ -88,15 +88,24 @@ homeRouter.get( '/dashboard/new', authorized, ( req, res ) => {
 homeRouter.get( '/post/:id', async ( req, res ) => {
     try {
 
-        const post = ( await Post.findByPk( req.params.id, {
+        const postData = ( await Post.findByPk( req.params.id, {
             include: [ { 
                 model: User,
                 attributes: { 
                     exclude: [ 'password' ]
                     }
             } ] 
-        } ) )
-        .toJSON();
+        } ) );
+
+        if ( !postData ) {
+            res.render( '404', {
+                loggedIn: req.session.loggedIn,
+                userName: req.session.userName
+            } );
+            return;
+        }
+
+        const post = postData.toJSON();
 
         const commentData = ( await Comment.findAll( { 
             where: {
@@ -125,6 +134,14 @@ homeRouter.get( '/post/:id', async ( req, res ) => {
     } catch ( err ) {
         res.status(400).json( err );
     }
+    
+} );
+
+homeRouter.get( '/*', ( req, res ) => {
+    res.render( '404', {
+        loggedIn: req.session.loggedIn,
+        userName: req.session.userName
+    } );
 } );
 
 module.exports = homeRouter;
