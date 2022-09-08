@@ -1,25 +1,18 @@
 const editButton = document.querySelector( '#edit-post' );
 const saveButton = document.querySelector( '#save-edit' );
 const deleteButton = document.querySelector( '#delete-post' );
-const editTitleEl = document.querySelector( '#edit-title' );
-const editContentEl = document.querySelector( '#edit-content' );
-const titleEl = document.querySelector( '#title' );
-const contentEl = document.querySelector( '#content' );
+const titleEl = document.querySelector( '#edit-title' );
+const contentEl = document.querySelector( '#edit-content' );
+const editViews = document.querySelectorAll( '.edit' );
+
 
 const editPost = ( event ) => {
-    titleEl.classList.add( 'd-none' );
-    editTitleEl.classList.remove( 'd-none' );
-
-    contentEl.classList.add( 'd-none' );
-    editContentEl.classList.remove( 'd-none' );
-
-    editButton.classList.add( 'd-none' );
-    saveButton.classList.remove( 'd-none' );
+    editViews.forEach( view => view.classList.toggle( 'd-none' ) );
 }
 
 const saveChanges = async ( event ) => {
-    const title = editTitleEl.value.trim();
-    const content = editContentEl.value.trim();
+    const title = titleEl.value.trim();
+    const content = contentEl.value.trim();
 
     const response = await fetch( `/api/posts/${ postEl.dataset.id }`, { 
         method: 'PUT',

@@ -1,8 +1,9 @@
 const userRouter = require( 'express' ).Router();
 const { User } = require( '../../models' );
+const toLowerEmail = require( '../../utils/toLowerEmail' );
 
 // create User route
-userRouter.post( '/', async ( req, res ) => {
+userRouter.post( '/', toLowerEmail, async ( req, res ) => {
     try {
         const newUserData = await User.create( req.body );
 
@@ -16,7 +17,7 @@ userRouter.post( '/', async ( req, res ) => {
 } );
 
 // User login route
-userRouter.post( '/login', async ( req, res ) => {
+userRouter.post( '/login', toLowerEmail, async ( req, res ) => {
     try {
         const userData = await User.findOne( { where: { email: req.body.email } } );
 

@@ -1,21 +1,27 @@
 <div id="post" data-id="{{post.id}}" class="w-100">
     {{#if usersPost}}
     <div class="d-flex justify-content-end">
-        <button id="edit-post" class="btn btn-dark bg-navy text-light px-4 m-2">Edit Post</button>
-        <button id="save-edit" class="btn btn-dark bg-navy text-light px-4 m-2 d-none">Save Changes</button>
+        <button id="edit-post" class="btn btn-dark bg-navy text-light px-4 m-2 edit">Edit Post</button>
+        <button id="save-edit" class="btn btn-dark bg-navy text-light px-4 m-2 d-none edit">Save Changes</button>
         <button type="button" class="btn btn-danger text-light px-4 m-2" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete Post</button>
     </div>
     {{/if}}
     <div class="container d-flex justify-content-center">
-        <h2 id="title" class="mb-3">{{post.title}}</h2>
-        <input id="edit-title" type="text" name="Edit Title" class="form-control mb-3 w-50 d-none" value="{{post.title}}">
+        <h2 class="mb-3 edit">{{post.title}}</h2>
+        <div class="form-floating m-3 edit d-none w-75">
+            <input id="edit-title" type="text" name="Edit Title" class="form-control mb-3" value="{{post.title}}">
+            <label class="form-label ms-3" for="cityInput">Title</label>
+        </div>
     </div>
 </div>
 <div class="container d-flex flex-column align-items-center">
     <div class="card m-1">
         <div class="card-body">
-            <textarea class="col-12 form-control d-none" name="Edit Content" id="edit-content" cols="200" rows="15">{{post.content}}</textarea>
-            <p id="content">{{post.content}}</p>
+            <div class="form-floating m-3 edit d-none">
+                <textarea class="col-12 form-control" name="Edit Content" id="edit-content" cols="200" rows="15" style="height: 20em;" >{{post.content}}</textarea>
+                <label class="form-label ms-3" for="content">Content</label>
+            </div>
+            <p class="edit">{{post.content}}</p>
         </div>
         <footer class="card-footer d-flex justify-content-between">
             <small class="text-muted">Posted By: {{post.user.username}}</small>
