@@ -30,21 +30,21 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mb-2 mb-lg-0 w-100 align-items-sm-end">
                         <li class="nav-item mx-1 my-2">
-                            <a class="nav-link btn bg-light-blue px-4 text-white" href="/">Home</a>
+                            <a class="nav-link btn bg-light-blue px-4 text-white rounded-pill" href="/">Home</a>
                         </li>
                         <li class="nav-item mx-1 my-2">
-                            <a class="nav-link btn bg-light-blue px-4 text-white" href="/dashboard">Dashboard</a>
+                            <a class="nav-link btn bg-light-blue px-4 text-white rounded-pill" href="/dashboard">Dashboard</a>
                         </li>
                         {{#if loggedIn}}
                         <li class="ms-auto me-sm-2 order-1">
                             <small>Logged In as:<br>{{userName}}</small> 
                         </li>
                         <li class="nav-item order-sm-2 mx-1 my-2">  
-                            <a id="logout" class="nav-link btn bg-light-blue px-4 text-white" href="#">Logout</a>
+                            <a id="logout" class="nav-link btn bg-light-blue px-4 text-white rounded-pill" href="#">Logout</a>
                         </li>
                         {{else}}
                         <li class="ms-sm-auto mx-1 my-2">
-                            <a class="nav-link btn bg-light-blue px-4 text-white" href="/login">Login</a>
+                            <a class="nav-link btn bg-light-blue px-4 text-white rounded-pill" href="/login">Login</a>
                         </li>
                         {{/if}}
                     </ul>

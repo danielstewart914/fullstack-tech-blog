@@ -4,15 +4,15 @@
     <div class="card-body">
         <form id="new-post" class="row p-2"></form>
             <div class="form-floating m-3">
-                <input type="text" name="Post Title" id="title" class="form-control" placeholder="Title">
+                <input type="text" name="Post Title" id="title" class="form-control" placeholder="Title" data-bs-trigger="manual" data-bs-placement="bottom" data-bs-title="Title cannot be blank!">
                 <label class="form-label ms-3" for="cityInput">Title</label>
             </div>
             <div class="form-floating m-3">
-                <textarea class="col-12 form-control" name="Edit Content" id="content" cols="200" rows="20" style="height: 20em;" placeholder="Content"></textarea>
+                <textarea class="col-12 form-control" name="Edit Content" id="content" cols="200" rows="20" style="height: 20em;" placeholder="Content" data-bs-trigger="manual" data-bs-placement="bottom" data-bs-title="Content cannot be blank!"></textarea>
                 <label class="form-label ms-3" for="content">Content</label>
             </div>
             <footer class="text-end">
-                <button id="submit-post" class="btn btn-dark bg-navy text-light px-4">Submit</button>
+                <button id="submit-post" class="btn btn-dark bg-navy text-light px-4 rounded-pill">Submit</button>
             </footer>
         </form>
     </div>
