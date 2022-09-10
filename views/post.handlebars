@@ -2,7 +2,7 @@
     {{#if usersPost}}
     <div class="d-flex justify-content-end">
         <button id="edit-post" class="btn btn-dark bg-navy text-light px-4 m-2 edit rounded-pill">Edit Post</button>
-        <button id="save-edit" class="btn btn-dark bg-success text-light px-4 m-2 d-none edit rounded-pill">Save Changes</button>
+        <button id="save-edit" class="btn btn-dark bg-success text-light px-4 m-2 d-none edit rounded-pill" data-method="PUT">Save Changes</button>
         <button id="cancel-edit" class="btn btn-dark bg-navy text-light px-4 m-2 d-none edit rounded-pill">Cancel Changes</button>
         <button type="button" class="btn btn-danger text-light px-4 m-2 rounded-pill" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete Post</button>
     </div>
@@ -11,8 +11,8 @@
         <h2 class="mb-3 edit">{{post.title}}</h2>
         {{!-- hidden title input field for editing --}}
         <div class="form-floating m-3 edit d-none w-75">
-            <input id="edit-title" type="text" name="Edit Title" class="form-control mb-3" value="{{post.title}}"  data-bs-trigger="manual" data-bs-placement="bottom" data-bs-title="Title cannot be blank!">
-            <label class="form-label ms-3" for="cityInput">Title</label>
+            <input id="title" type="text" name="Edit Title" class="form-control mb-3" value="{{post.title}}"  data-bs-trigger="manual" data-bs-placement="bottom" data-bs-title="Title cannot be blank!">
+            <label class="form-label ms-3" for="title">Title</label>
         </div>
     </div>
 </div>
@@ -22,7 +22,7 @@
             <p class="edit">{{post.content}}</p>
             {{!-- hidden content textarea for editing --}}
             <div class="form-floating m-3 edit d-none">
-                <textarea class="col-12 form-control" name="Edit Content" id="edit-content" cols="200" rows="15" style="height: 20em;" data-bs-trigger="manual" data-bs-placement="bottom" data-bs-title="Content cannot be blank!">{{post.content}}</textarea>
+                <textarea class="col-12 form-control" name="Edit Content" id="content" cols="200" rows="15" style="height: 20em;" data-bs-trigger="manual" data-bs-placement="bottom" data-bs-title="Content cannot be blank!">{{post.content}}</textarea>
                 <label class="form-label ms-3" for="content">Content</label>
             </div>
         </div>
@@ -65,9 +65,6 @@
         {{/each}}
     </div>
 </div>
-{{#if loggedIn}}
-    <script src="/js/comment.js"></script>
-{{/if}}
 {{#if usersPost}}
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -87,4 +84,7 @@
   </div>
 </div>
 <script src="/js/post.js"></script>
+{{/if}}
+{{#if loggedIn}}
+    <script src="/js/comment.js"></script>
 {{/if}}
