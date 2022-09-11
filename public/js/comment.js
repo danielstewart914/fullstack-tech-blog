@@ -25,3 +25,6 @@ const postComment = async () => {
 }
 
 postCommentButton.addEventListener( 'click', postComment );
+newCommentEl.addEventListener( 'keypress', ( event ) => {
+    if ( event.key === 'Enter' ) postCommentButton.click();
+} );
