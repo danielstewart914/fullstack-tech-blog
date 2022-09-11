@@ -1,6 +1,8 @@
 # fullstack-tech-blog - [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ## Description
 
+A simple blog site for users to create blog posts and comment on the posts of others.
+
 ## Table of Contents
 
 - [Usage](#usage)
