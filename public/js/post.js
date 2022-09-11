@@ -18,7 +18,6 @@ const editViews = document.querySelectorAll( '.edit' );
 // tool tips
 const emptyTitleToolTip = new bootstrap.Tooltip( titleEl );
 const emptyContentToolTip = new bootstrap.Tooltip( contentEl );
-let showingToolTip = false;
 
 // API URL's for creating new post or updating existing post
 const apiURL = {
@@ -29,28 +28,6 @@ const apiURL = {
 // toggle edit and display elements
 const editPost = ( event ) => {
     editViews.forEach( view => view.classList.toggle( 'd-none' ) );
-}
-
-// check if element is blank
-const isBlank = ( input, toolTip ) => {
-
-    // if input is blank
-    if ( !input ) {
-        // if not showing tooltip
-        if ( !showingToolTip ) {
-            toolTip.show();
-            showingToolTip = true;
-            // hide tooltip after 1.5 seconds
-            setTimeout( () => {
-                toolTip.hide();
-                showingToolTip = false;
-            }, 1500 );
-        }
-        // return true for blank element
-        return true;
-    }
-    // return false for populated element
-    return false;
 }
 
 // save post

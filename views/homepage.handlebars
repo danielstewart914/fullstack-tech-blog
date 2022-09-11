@@ -1,22 +1,28 @@
-<h2 class="mb-3">Recent Posts</h2>
 <div class="container">
-    <div class="list-group list-group-numbered border border-dark">
-        {{#each posts}}
-        <a class="list-group-item d-flex flex-column flex-sm-row justify-content-between align-items-start" href="/post/{{id}}">
-            <div class="ms-sm-2 me-sm-auto">
-                <div class="fw-bold">{{title}}</div>
-                <small class="text-muted">Posted By: {{user.username}}</small>
+    <div class="card border-dark">
+        <div class="card-header bg-dark text-white">
+            <h2 class="text-center">Recent Posts</h2>
+        </div>
+        <div class="card-body">
+            {{#each posts}}
+            <div class="card m-2 border border-dark">
+                <a class="card-body d-flex flex-column flex-sm-row justify-content-between align-items-start text-decoration-none" href="/post/{{id}}">
+                    <div class="ms-sm-2 me-sm-auto">
+                        <div class="fw-bold fs-5">{{title}}</div>
+                        <small class="text-muted">Posted By: {{user.username}}</small>
+                    </div>
+                    <div class="d-flex flex-column align-items-start align-items-sm-end">
+                        <div>
+                            <span class="fw-bold">Comments</span>                 
+                            <span class="badge text-white bg-green rounded-pill">{{postComments.length}}</span>
+                        </div>
+                        <div>
+                            <small class="text-muted">{{format_date createdAt}}</small>
+                        </div>
+                    </div>
+                </a>
             </div>
-            <div class="d-flex flex-column align-items-start align-items-sm-end">
-                <div>
-                    <span class="fw-bold">Comments</span>                 
-                    <span class="badge text-white bg-green rounded-pill">{{postComments.length}}</span>
-                </div>
-                <div>
-                    <small class="text-muted">{{format_date createdAt}}</small>
-                </div>
-            </div>
-        </a>
-        {{/each}}
+            {{/each}}
+        </div>
     </div>
 </div>
